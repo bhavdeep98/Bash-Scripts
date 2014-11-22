@@ -1,0 +1,19 @@
+
+#!/bin/bash
+#string of length 10
+clear
+i=1
+while [ $i ]
+do
+    read -p "Enter a String of length 10 : " string
+    length=`echo $string | wc -m`
+    if [ $length -eq 11 ]
+    then
+       echo "lenght is right"
+       break
+    else
+       echo "lenght is not right enter again"
+    fi
+done
+
+

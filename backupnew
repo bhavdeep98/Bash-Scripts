@@ -1,0 +1,23 @@
+
+#!/bin/bash
+# backup
+clear
+echo -en "\033[0m"
+echo -en "Enter the location whose backup is to be made  \033[5m:\e[0m "
+read source
+echo -en "Enter the location where backup is to be made  \033[5m:\e[0m "
+read path
+if [ -d $path ]
+then
+  echo -n ""
+else
+   mkdir --parent $path
+fi
+cd $source
+for i in *
+do
+  cp $(basename "$i") $path
+done
+cd - > /dev/null
+
+

@@ -1,0 +1,16 @@
+
+#!/bin/bash
+# rename
+# touch {1..100} ~/check
+clear
+echo -en "\033[0m"
+echo -en "Enter the location for the file to be renamed(folder's name) \033[5m:\e[0m "
+read path
+cd $path
+for i in *
+do
+  j=`echo $(basename "$i")"new"`
+  mv $(basename "$i") $(basename "$j")
+done
+cd - >/dev/null
+

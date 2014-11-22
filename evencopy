@@ -1,0 +1,16 @@
+
+#!/bin/bash
+#copy one file into another
+clear
+if [ `expr $# % 2` -eq 0 ]
+then
+for ((i=1;i<=$#;i+=2))
+do
+#  echo ${!i}
+   let j=i+1 
+   cat ${!i} >> ${!j} 2> /dev/null
+done
+else
+  echo "VAN ERROR"
+fi
+

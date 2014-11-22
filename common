@@ -1,0 +1,24 @@
+
+#!/bin/bash
+# remove common files in one directory
+clear
+echo -en "\033[0m"
+echo -en "Enter the first location  \033[5m:\e[0m "
+read path1
+echo -en "Enter the second location  \033[5m:\e[0m "
+read path2
+
+cd $path1
+for i in *
+do
+  cd $path2
+  for j in *
+  do
+    if [ $i = $j ]
+    then
+      rm $j
+    fi
+  done
+  cd - > /dev/null
+done
+
