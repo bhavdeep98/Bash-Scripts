@@ -1,0 +1,11 @@
+#!/bin/bash
+touch f1
+touch f2
+cp -f f2 f1
+echo "">f2
+for n in `ls /var/spool/cron/`
+do
+	echo $n " has scheduled process :  `crontab -l -u $n`" >> f2
+done
+diff f2 f1
+

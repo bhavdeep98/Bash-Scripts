@@ -1,0 +1,12 @@
+#!/bin/bash
+for n in `cat /etc/nuser`
+do
+	if useradd $n 2>/dev/null 
+	then 
+		echo "password" | passwd --stdin $n >/dev/null
+		echo "$n has been created" 
+		else
+		echo "$n User already Exists" | mail -s "tried useradd by script2" root
+	fi
+done
+echo "" > /etc/nuser

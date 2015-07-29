@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for n in `cut -f1 -d ":" /etc/passwd` 
+do 	
+	#echo `id -u $n`	
+	if [ `id -u $n` -ge 500 ]
+	then
+		echo $n"@gmail.com"
+	fi
+done

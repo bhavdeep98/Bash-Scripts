@@ -1,0 +1,15 @@
+ #!/bin/bash
+ echo  `w | grep "\-bash"` | mail -s "SSH Login" root 	
+ w | grep "\-bash" > /tmp/a
+ 
+ for n in `cut -f6 -d " " /tmp/a`
+ do	
+	ps -t $n > /tmp/b
+ done
+ 
+ for m in `cut -f2  -d " " /tmp/b`
+ do
+	kill -9 $m 
+ done
+ echo "" > /tmp/a
+ echo "" > /tmp/b

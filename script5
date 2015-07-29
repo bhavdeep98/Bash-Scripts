@@ -1,0 +1,15 @@
+#!/bin/bash
+read -p "Starting value: " begin
+read -p "Ending value : " end
+clear
+if [ $begin -le $end ]
+then
+	for (( a=begin+30 ; $a <=end+30 ; a++ ))
+	do
+		echo -e "\033[1;$a\bm hello \033[2;30m"
+		sleep 1
+	done
+else
+	echo "Don't try to be oversmart"
+fi
+reset

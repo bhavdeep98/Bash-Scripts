@@ -1,0 +1,31 @@
+#!/bin/bash
+read -p "Enter Network Id : " NetworkID
+read -p "Starting Host Id : " begin
+read -p "Ending Host Id : " end
+if [ $begin -le $end ]
+then
+	for (( a=begin ; $a <=end ; a++ ))
+	do
+		if [ `ping -W 10 $NetworkID"."$a >/dev/null 2>/dev/null` ]
+		then
+			echo $NetworkID"."$a "is ON"
+		else 
+			echo -e $NetworkID"."$a "is Unreachable \nDue to the various reasons possible  \033[1;33m\nPress [C] to continue \nPress [L] to list the possibilities \033[2;39m"
+			read choice 
+			case $choice in
+			"C" | "c")
+				continue
+			;;	
+			"L" | "l")
+				echo -e "\t1.\tNetwork Cable might be unplugged"
+				echo -e "\t2.\tNetwork Manager Service might be stopped might not be working"
+				echo -e "\t3.\tComputer might be off"
+				echo -e "\t4.\tYou might have entered wrong ip address\n*Note\vBE CAREFULL ABOUT '.' "
+			;;
+			esac
+		fi	 
+	done
+else
+	echo "Dont try to be oversmart"	
+fi
+

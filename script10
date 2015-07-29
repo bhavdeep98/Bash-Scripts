@@ -1,0 +1,8 @@
+#!/bin/bash
+for n in `ls /var/spool/cron/`
+do
+	#echo -n $n " has scheduled process : " `crontab -l -u $n` | mail -s "scheduled entry" root
+	echo $n " has scheduled process : " `crontab -l -u $n`
+	#crontab -r -u $n
+done
+

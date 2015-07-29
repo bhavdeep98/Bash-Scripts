@@ -1,0 +1,11 @@
+#!/bin/bash
+while :
+do
+A=`ps -e -o pid,cmd | grep sshd | grep pts | tail -2 | head -1 | cut -f2 -d "@" `
+ID=`ps -e -o pid,cmd | grep sshd | grep pts | tail -2 | head -1 | cut -f2 -d " " `
+IP=`who | grep $A | cut -f2 -d "(" | cut -f1 -d ")" `
+USER=`ps -e -o user,cmd| grep $A| cut -f1 -d " "`
+kill -9 $ID
+echo "User $USER was logged in from $IP at `date`" | mail -s "sec issue" 
+sleep 20
+done
